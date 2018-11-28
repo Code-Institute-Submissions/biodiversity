@@ -9,6 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^4.0.0"
+  },
+  "dependencies": {
+    "graceful-fs": "^4.1.15",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.1",
+    "minimatch": "^3.0.4"
   }
 }
