@@ -20,16 +20,18 @@ function initMap() {
 
 queue()
   .defer(d3.json, "data/akparks.json")
+  .defer(d3.json, "data/parksize.json")
   .await(makeGraphs);
 
-function makeGraphs(error, akparksData) {
+function makeGraphs(error, akparksData, parksizeData) {
   var ndx_alaska = crossfilter(akparksData);
+  var ndx_size = crossfilter(parksizeData);
 
   var category_dim = ndx_alaska.dimension(function(data) {return data.Category;});
   var category_group = category_dim.group().reduceCount();
 
-  var pname_dim = ndx_alaska.dimension(function(data) {return data.ParkName;});
-  var park_size_group = pname_dim.group().reduceCount(dc.pluck('Acres'));
+  var pname_dim = ndx_size.dimension(dc.pluck('Park Name'));
+  var park_size_group = pname_dim.group().reduceSum(dc.pluck('Acres'));
 
   dc.pieChart("#num-species")
     .height(1000)
@@ -39,8 +41,8 @@ function makeGraphs(error, akparksData) {
     .group(category_group);
 
   dc.pieChart("#park-size")
-    .height(700)
-    .radius(300)
+    .height(1000)
+    .radius(500)
     .transitionDuration(1500)
     .dimension(pname_dim)
     .group(park_size_group);
