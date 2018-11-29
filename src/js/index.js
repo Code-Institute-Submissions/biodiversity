@@ -28,12 +28,22 @@ function makeGraphs(error, akparksData) {
   var category_dim = ndx_alaska.dimension(function(data) {return data.Category;});
   var category_group = category_dim.group().reduceCount();
 
+  var pname_dim = ndx_alaska.dimension(function(data) {return data.ParkName;});
+  var park_size_group = pname_dim.group().reduceCount(dc.pluck('Acres'));
+
   dc.pieChart("#num-species")
     .height(1000)
     .radius(500)
     .transitionDuration(1500)
     .dimension(category_dim)
     .group(category_group);
+
+  dc.pieChart("#park-size")
+    .height(700)
+    .radius(300)
+    .transitionDuration(1500)
+    .dimension(pname_dim)
+    .group(park_size_group);
 
   dc.renderAll();
 }
