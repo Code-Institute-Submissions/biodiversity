@@ -13,7 +13,7 @@ function streamJS() {
 
 function streamCSS() {
   return src('src/css/*.css')
-    .pipe(dest('dist/js'));
+    .pipe(dest('dist/css'));
 }
 
 function streamHTML() {

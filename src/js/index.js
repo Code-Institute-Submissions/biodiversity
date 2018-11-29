@@ -17,3 +17,23 @@ function initMap() {
         }
     });
 }
+
+queue()
+  .defer(d3.json, "data/akparks.json")
+  .await(makeGraphs);
+
+function makeGraphs(error, akparksData) {
+  var ndx_alaska = crossfilter(akparksData);
+
+  var category_dim = ndx_alaska.dimension(function(data) {return data.Category;});
+  var category_group = category_dim.group().reduceCount();
+
+  dc.pieChart("#num-species")
+    .height(1000)
+    .radius(500)
+    .transitionDuration(1500)
+    .dimension(category_dim)
+    .group(category_group);
+
+  dc.renderAll();
+}
