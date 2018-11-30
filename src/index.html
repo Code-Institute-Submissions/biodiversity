@@ -82,8 +82,33 @@
 
   </main>
 
-  <script type="text/javascript">function initMap(){var l=new google.maps.Map(document.getElementById("map"),{zoom:6,center:{lat:67.78,lng:-153.3}})};</script>
+  <script type="text/javascript">function initMap(){var l=new google.maps.Map(document.getElementById("map"),
+  {zoom:4.5,center:{lat:64.07,lng:-152.29}})};
+
+  var locations = [{lat: 61, lng: -142},
+        {lat: 60.97, lng: -153.42},
+        {lat: 67.55,  lng: -159.28},
+        {lat: 59.92, lng: -149.65},
+        {lat: 58.5, lng: -155},
+        {lat: 58.5, lng: -137},
+        {lat: 67.78, lng: -153.3},
+        {lat: 63.33,  lng: -150.5}
+        ];
+
+  var markers = locations.map(function(location) {
+            return new google.maps.Marker({
+              position: location,
+            });
+          });
+
+
+          var markerCluster = new MarkerClusterer(map, markers,
+              {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+
+      </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7c1Ktu8EgwR2j6H7yxzDqsh0bg7rc7M&callback=initMap"></script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
 
 </body>
