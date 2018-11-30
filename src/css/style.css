@@ -5,3 +5,13 @@ a, a:hover, a:focus {
 .map {
   min-height: 600px;
 }
+
+#speciescat-stack .x.axis text {
+    text-anchor: end !important;
+    transform: rotate(-65deg);
+}
+
+.dc-chart .axis text {
+    font-family: sans-serif;
+    font-size: 15px;
+}

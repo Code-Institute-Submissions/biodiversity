@@ -157,22 +157,125 @@ function makeGraphs(error, akparksData, parksizeData) {
         }
         );
 
-dc.pieChart("#num-species")
+        var speciesNumByCatAlgae = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Algae') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+        var speciesNumByCatAmphibean = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Amphibian') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+       var speciesNumByCatBird = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Bird') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+       var speciesNumByCatCrustacean = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Crab/Lobster/Shrimp') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+        var speciesNumByCatFish = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Fish') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+        var speciesNumByCatFungi = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Fungi') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+           var speciesNumByCatInsect = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Insect') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+           var speciesNumByCatInvertebrate = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Invertebrate') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+           var speciesNumByCatMammal = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Mammal') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+           var speciesNumByCatNonvascularPlant = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Nonvascular Plant') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+           var speciesNumByCatReptile = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Reptile') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+           var speciesNumByCatSlug = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Slug/Snail') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+           var speciesNumByCatSpider = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Spider/Scorpion') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+           var speciesNumByCatVascularPlant = pname_dim.group().reduceCount(function (d) {
+               if (d.Category === 'Vascular Plant') {
+                   return +d.SpeciesName ;
+               } else {
+                   return 0;
+               }
+           });
+
+      dc.pieChart("#num-species")
         .height(1000)
         .radius(500)
         .transitionDuration(1500)
         .dimension(category_dim)
         .group(category_group);
 
-
-    /*dc.pieChart("#num-species2")
-        .height(700)
-        .radius(300)
-        .transitionDuration(1500)
-        .dimension(pname_dim)
-        .group(park_size_group);*/
-
-        dc.pieChart("#park-size")
+      dc.pieChart("#park-size")
         .height(1000)
         .radius(500)
         .transitionDuration(1500)
@@ -183,5 +286,33 @@ dc.pieChart("#num-species")
         return d.value.average;
         });
 
-        dc.renderAll();
+    var stackedChart = dc.barChart("#speciescat-stack");
+       stackedChart 
+       .width(1000)
+       .height(1000)
+       .dimension(pname_dim)
+       .group(speciesNumByCatAlgae, "Algae")
+       .stack(speciesNumByCatAmphibean, "Amphibian")
+       .stack(speciesNumByCatBird, "Bird")
+       .stack(speciesNumByCatCrustacean, "Crustacean")
+       .stack(speciesNumByCatFish, "Fish")
+       .stack(speciesNumByCatFungi, "Fungi")
+       .stack(speciesNumByCatInsect, "Insect")
+       .stack(speciesNumByCatInvertebrate, "Invertabrate")
+       .stack(speciesNumByCatMammal, "Mammal")
+       .stack(speciesNumByCatNonvascularPlant, "Nonvascular Plant")
+       .stack(speciesNumByCatReptile, "Reptile")
+       .stack(speciesNumByCatSlug, "Slug")
+       .stack(speciesNumByCatSpider, "Spider")
+       .stack(speciesNumByCatVascularPlant, "Vascular Plant")
+       .x(d3.scale.ordinal())
+       .xUnits(dc.units.ordinal)
+       .legend(dc.legend().x(470).y(0).itemHeight(15).gap(5));
+
+       stackedChart.margins().left = 100;
+       stackedChart.margins().right = 10;
+       stackedChart.margins().top = 10;
+       stackedChart.margins().bottom = 300;
+
+    dc.renderAll();
 }
