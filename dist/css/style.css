@@ -1,0 +1,17 @@
+h3 {
+  font-size: 16px;
+}
+
+.map {
+  min-height: 650px;
+}
+
+#speciescat-stack .x.axis text {
+    text-anchor: end !important;
+    transform: rotate(-65deg);
+}
+
+.dc-chart .axis text {
+    font-family: sans-serif;
+    font-size: 15px;
+}
