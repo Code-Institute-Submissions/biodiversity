@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^4.0.0"
+    "gulp": "^4.0.0",
+    "gulp-jshint": "^2.1.0",
+    "jshint-stylish": "^2.2.1"
   },
   "dependencies": {
     "graceful-fs": "^4.1.15",

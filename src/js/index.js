@@ -121,7 +121,7 @@ function makeGraphs(error, akparksData, parksizeData) {
 }*/
 
 queue()
-    .defer(d3.json, "data/akparks.json")
+    .defer(d3.json, "../data/akparks.json")
     .await(makeGraphs);
 
 function makeGraphs(error, akparksData, parksizeData) {
