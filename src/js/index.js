@@ -1,209 +1,90 @@
-/*document.addEventListener('DOMContentLoaded', function () {
-  if (document.querySelectorAll('#map').length > 0)
-  {
-    var js_file = document.createElement('script');
-    js_file.type = 'text/javascript';
-    js_file.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7c1Ktu8EgwR2j6H7yxzDqsh0bg7rc7M&callback=initMap';
-    document.getElementsByTagName('head')[0].appendChild(js_file);
-  }
-});
-
-function initMap() {
-    var map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 4.5,
-        center: {
-            lat: 64.07,
-            lng: -152.29
-        }
-    });
-
-    var locations = [{
-                lat: 61,
-                lng: -142
-            },
-            {
-                lat: 60.97,
-                lng: -153.42
-            },
-            {
-                lat: 67.55,
-                lng: -159.28
-            },
-            {
-                lat: 59.92,
-                lng: -149.65
-            },
-            {
-                lat: 58.5,
-                lng: -155
-            },
-            {
-                lat: 58.5,
-                lng: -137
-            },
-            {
-                lat: 67.78,
-                lng: -153.3
-            },
-            {
-                lat: 63.33,
-                lng: -150.5
-            }
-            ];
-            var markers = locations.map(function(location) {
-                return new google.maps.Marker({
-                    position: location,
-                });
-            });
-            var markerCluster = new MarkerClusterer(map, markers, {
-                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-            });
-
-}*/
-
-/*queue()
-  .defer(d3.json, "data/akparks.json")
-  .defer(d3.json, "data/parksize.json")
-  .await(makeGraphs);
-
-function makeGraphs(error, akparksData, parksizeData) {
-  var ndx_alaska = crossfilter(akparksData);
-  //var ndx_size = crossfilter(parksizeData);
-
-  var category_dim = ndx_alaska.dimension(function(data) {return data.Category;});
-  var category_group = category_dim.group().reduceCount();
-
-  var pname_dim = ndx_alaska.dimension(dc.pluck('ParkName'));
-  var park_size_group = pname_dim.group().reduce(
-
-        function (p,v) {
-            p.count++;
-            p.total += v.Acres;
-            p.average = p.total / p.count;
-            return p;
-        },
-
-        function (p,v) {
-            p.count --;
-            if (p.count == 0) {
-                p.total = 0;
-                p.average = 0;
-            } else {
-                p.total -= v.Acres;
-                p.average = p.total / p.count;
-            }
-            return p;
-        },
-
-        function() {
-            return {count: 0, total: 0, average: 0};
-        }
-        );
-
-  dc.pieChart("#num-species")
-    .height(1000)
-    .radius(500)
-    .transitionDuration(1500)
-    .dimension(category_dim)
-    .group(category_group);
-
-    dc.pieChart("#park-size")
-      .height(1000)
-      .radius(500)
-      .transitionDuration(1500)
-      .dimension(pname_dim)
-      .group(park_size_group)
-      .valueAccessor(function (d) {
-        return d.value.average
-      });
-
-  dc.renderAll();
-}*/
-
 queue()
     .defer(d3.json, "../data/akparks.json")
     .await(makeGraphs);
 
-function makeGraphs(error, akparksData, parksizeData) {
+function makeGraphs(error, akparksData) {
+
+//Create 3 dc.js charts showing size (piechart) and breakdown of type of
+//organisms present (piechart and stacked bar chart)
+
     var ndx_alaska = crossfilter(akparksData);
 
     var category_dim = ndx_alaska.dimension(function(data) {return data.Category;});
     var category_group = category_dim.group().reduceCount();
 
     var pname_dim = ndx_alaska.dimension(dc.pluck('ParkName'));
+
+//custom reducer calculates average area by park since each entry is counted
+//and thus summed values inaccurate
+
     var park_size_group = pname_dim.group().reduce(
+      function (p,v) {
+        p.count++;
+        p.total += v.Acres;
+        p.average = p.total / p.count;
+        return p;
+      },
 
-        function (p,v) {
-            p.count++;
-            p.total += v.Acres;
-            p.average = p.total / p.count;
-            return p;
-        },
-
-        function (p,v) {
-            p.count --;
-            if (p.count == 0) {
-                p.total = 0;
-                p.average = 0;
-            } else {
-                p.total -= v.Acres;
-                p.average = p.total / p.count;
-            }
-            return p;
-        },
-
-        function() {
-            return {count: 0, total: 0, average: 0};
+      function (p,v) {
+        p.count --;
+        if (p.count == 0) {
+            p.total = 0;
+            p.average = 0;
+        } else {
+          p.total -= v.Acres;
+          p.average = p.total / p.count;
         }
-        );
+        return p;
+        },
 
-        function speciesNumByCat(cat) {
-              return pname_dim.group().reduce(
-                  function (p, v) {
-                      p.total++;
-                      if(v.Category == cat) {
-                          p.match++;
-                      }
-                      return p;
+      function() {
+        return {count: 0, total: 0, average: 0};
+       }
+      );
 
-                  },
-                  function (p, v) {
-                      p.total--;
-                      if(v.Category == cat) {
-                          p.match--;
-                      }
-                      return p;
-                  },
-                  function () {
-                      return {total: 0, match: 0};
-                  }
-              );
+//calculates total number of members of each of the 14 category groups by park,
+//provides the values for the stacked bar chart
+      function speciesNumByCat(cat) {
+        return pname_dim.group().reduce(
+          function (p, v) {
+            p.total++;
+            if(v.Category == cat) {
+              p.match++;
+              }
+            return p;
+          },
+          function (p, v) {
+            p.total--;
+            if(v.Category == cat) {
+               p.match--;
+               }
+            return p;
+          },
+          function () {
+            return {total: 0, match: 0};
+            }
+          );
           }
 
-          var speciesNumByCatAlgae = speciesNumByCat("Algae");
-          var speciesNumByCatAmphibean = speciesNumByCat("Amphibian");
-          var speciesNumByCatBird = speciesNumByCat("Bird");
-          var speciesNumByCatCrustacean = speciesNumByCat("Crab/Lobster/Shrimp");
-          var speciesNumByCatFish = speciesNumByCat("Fish");
-          var speciesNumByCatFungi = speciesNumByCat("Fungi");
-          var speciesNumByCatInsect = speciesNumByCat("Insect");
-          var speciesNumByCatInvertebrate = speciesNumByCat("Invertabrate");
-          var speciesNumByCatMammal = speciesNumByCat("Mammal");
-          var speciesNumByCatNonvascularPlant = speciesNumByCat("Nonvascular Plant");
-          var speciesNumByCatReptile = speciesNumByCat("Reptile");
-          var speciesNumByCatSlug = speciesNumByCat("Slug/Snail");
-          var speciesNumByCatSpider = speciesNumByCat("Spider/Scorpion");
-          var speciesNumByCatVascularPlant = speciesNumByCat("Vascular Plant") ;
+          var Algae = speciesNumByCat("Algae");
+          var Amphibean = speciesNumByCat("Amphibian");
+          var Bird = speciesNumByCat("Bird");
+          var Crustacean = speciesNumByCat("Crab/Lobster/Shrimp");
+          var Fish = speciesNumByCat("Fish");
+          var Fungi = speciesNumByCat("Fungi");
+          var Insect = speciesNumByCat("Insect");
+          var Invertebrate = speciesNumByCat("Invertabrate");
+          var Mammal = speciesNumByCat("Mammal");
+          var NonvascularPlant = speciesNumByCat("Nonvascular Plant");
+          var Reptile = speciesNumByCat("Reptile");
+          var Slug = speciesNumByCat("Slug/Snail");
+          var Spider = speciesNumByCat("Spider/Scorpion");
+          var VascularPlant = speciesNumByCat("Vascular Plant") ;
 
-          dc.pieChart("#num-species")
-            .height(600)
-            .radius(300)
-            .transitionDuration(1500)
-            .dimension(category_dim)
-            .group(category_group)
-            .legend(dc.legend().x(40).y(0).gap(5))
-            .externalLabels(50)
-            .externalRadiusPadding(50);
+//create the 3 dc charts
+//  Park Size
+//  Category breakdown piechart
+//  Category breakdown by park stackedchart
 
           dc.pieChart("#park-size")
             .height(600)
@@ -213,35 +94,48 @@ function makeGraphs(error, akparksData, parksizeData) {
             .group(park_size_group)
             .legend(dc.legend().x(40).y(0).gap(5))
             .externalRadiusPadding(50)
+            .colors(d3.scale.ordinal().range([ '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f']))
             .valueAccessor(function (d) {
             return d.value.average;
             });
 
+        dc.pieChart("#num-species")
+            .height(600)
+            .radius(300)
+            .transitionDuration(1500)
+            .dimension(category_dim)
+            .group(category_group)
+            .legend(dc.legend().x(40).y(0).gap(5))
+            .externalLabels(100)
+            .externalRadiusPadding(50);
+            //.colors(function(d){ return colorScale(d.Category); });
+
           var stackedChart = dc.barChart("#speciescat-stack");
           stackedChart
-              .width(1000)
-              .height(1500)
-              .dimension(pname_dim)
-              .group(speciesNumByCatAlgae, "Algae")
-              .stack(speciesNumByCatAmphibean, "Amphibian")
-              .stack(speciesNumByCatBird, "Bird")
-              .stack(speciesNumByCatCrustacean, "Crustacean")
-              .stack(speciesNumByCatFish, "Fish")
-              .stack(speciesNumByCatFungi, "Fungi")
-              .stack(speciesNumByCatInsect, "Insect")
-              .stack(speciesNumByCatInvertebrate, "Invertabrate")
-              .stack(speciesNumByCatMammal, "Mammal")
-              .stack(speciesNumByCatNonvascularPlant, "Nonvascular Plant")
-              .stack(speciesNumByCatReptile, "Reptile")
-              .stack(speciesNumByCatSlug, "Slug")
-              .stack(speciesNumByCatSpider, "Spider")
-              .stack(speciesNumByCatVascularPlant, "Vascular Plant")
-              .valueAccessor(function(d) {
-                  return d.value.match;
-              })
-              .x(d3.scale.ordinal())
-              .xUnits(dc.units.ordinal)
-              .legend(dc.legend().x(40).y(0).itemHeight(15).gap(5));
+            .width(1000)
+            .height(1500)
+            .dimension(pname_dim)
+            .group(VascularPlant, "Vascular Plant")
+            .stack(Bird, "Bird")
+            .stack(Fungi, "Fungi")
+            .stack(Fish, "Fish")
+            .stack(NonvascularPlant, "Nonvascular Plant")
+            .stack(Mammal, "Mammal")
+            .stack(Invertebrate, "Invertabrate")
+            .stack(Insect, "Insect")
+            .stack(Crustacean, "Crustacean")
+            .stack(Algae, "Algae")
+            .stack(Slug, "Slug")
+            .stack(Amphibean, "Amphibian")
+            .stack(Reptile, "Reptile")
+            .stack(Spider, "Spider")
+            .valueAccessor(function(d) {
+              return d.value.match;
+            })
+            .x(d3.scale.ordinal())
+            .xUnits(dc.units.ordinal)
+            .colors(d3.scale.ordinal().range(['#3182bd','#6baed6','#9ecae1', '#c6dbef', '#e6550d', '#fd8d3c', '#fdae6b', '#fdd0a2', '#31a354', '#74c476', '#a1d99b', '#c7e9c0', '#756bb1', '#9e9ac8']))
+            .legend(dc.legend().x(40).y(0).itemHeight(15).gap(5));
 
           stackedChart.margins().left = 300;
           stackedChart.margins().right = 10;

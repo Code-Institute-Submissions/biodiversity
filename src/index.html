@@ -5,21 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Alaskan National Parks Biodiversity Project</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="css/dc.min.css" type="text/css" />
   <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous">
 
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="js/d3.min.js"></script>
   <script type="text/javascript" src="js/crossfilter.min.js"></script>
   <script type="text/javascript" src="js/dc.min.js"></script>
   <script type="text/javascript" src="js/queue.min.js"></script>
-  <script type="text/javascript" src="js/index.min.js"></script>
-
+  <script type="text/javascript" src="js/index.js"></script>
 </head>
 
 <body>
@@ -30,7 +28,7 @@
       <div class="row">
         <div class="col-xs-12">
           <h1 class="text-center">Data Visualisation Project</h1>
-          <h2>Gates of the Artic National Park and Preserve</h2>
+          <h2 class="text-center">Alaskan National Parks and Preserves</h2>
         </div>
       </div>
 
@@ -119,10 +117,136 @@
     </script>
     <script src = "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script >
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7c1Ktu8EgwR2j6H7yxzDqsh0bg7rc7M&callback=initMap"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
 
-    <script id="__bs_script__">//<![CDATA[
-      document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.3'><\/script>".replace("HOST", location.hostname));
-  //]]></script>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Alaskan National Parks Biodiversity Project</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous">
+
+  <script type="text/javascript" src="js/d3.min.js"></script>
+  <script type="text/javascript" src="js/crossfilter.min.js"></script>
+  <script type="text/javascript" src="js/dc.min.js"></script>
+  <script type="text/javascript" src="js/queue.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+</head>
+
+<body>
+
+  <main>
+    <div class="container full-width">
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="text-center">Data Visualisation Project</h1>
+          <h2 class="text-center">Alaskan National Parks and Preserves</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3">
+          <h3>A Denali National Park and Preserve</h3>
+          <p>3,372,402 Acres</p>
+          <h3>B Gates Of The Arctic National Park and Preserve</h3>
+          <p>7,523,898 Acres</p>
+          <h3>C Glacier Bay National Park and Preserve</h3>
+          <p>3,224,840 Acres</p>
+          <h3>D Katmai National Park and Preserve</h3>
+          <p>3,674,530 Acres</p>
+          <h3>E Kenai Fjords National Park</h3>
+          <p>669,983 Acres</p>
+          <h3>F Kobuk Valley National Park</h3>
+          <p>1,750,717 Acres</p>
+          <h3>G Lake Clark National Park and Preserve</h3>
+          <p>2,619,733 Acres</p>
+          <h3>H Wrangell - St Elias National Park and Preserve</h3>
+          <p>8,323,148 Acres</p>
+        </div>
+        <div class="col-xs-9  map" id="map">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-xs-12" id="park-size">
+          <h2>Relative Sizes of the Alaskan Parks</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12" id="num-species">
+          <h2>Number of Species by Park</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12" id="speciescat-stack">
+          <h2>Number of Species by Park</h3>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+
+      function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4.5,
+          center: {lat: 64.07, lng: -152.29}
+        });
+
+
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+          });
+        });
+
+
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      }
+      var locations = [{lat: 63.33, lng: -150.5},
+            {lat:67.78, lng: -153.3 },
+            {lat: 58.5, lng: -137},
+            {lat: 58.5, lng: -155},
+            {lat: 59.92, lng: -149.65},
+            {lat: 67.55, lng: -159.28},
+            {lat: 60.97, lng: -153.42},
+            {lat: 61, lng: -142}
+            ];
+
+    </script>
+    <script src = "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script >
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7c1Ktu8EgwR2j6H7yxzDqsh0bg7rc7M&callback=initMap"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 
 </html>

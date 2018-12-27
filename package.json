@@ -9,14 +9,24 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.26.3",
     "gulp": "^4.0.0",
     "gulp-jshint": "^2.1.0",
+    "jshint": "^2.9.6",
     "jshint-stylish": "^2.2.1"
   },
   "dependencies": {
+    "crossfilter2": "^1.4.6",
+    "cssnano": "^4.1.7",
+    "d3": "^5.7.0",
+    "dc": "^3.0.9",
     "graceful-fs": "^4.1.15",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-uglify": "^3.0.1",
-    "minimatch": "^3.0.4"
+    "htmlmin": "0.0.7",
+    "jquery": "^3.3.1",
+    "minimatch": "^3.0.4",
+    "uglify-js": "^3.4.9"
   }
 }
