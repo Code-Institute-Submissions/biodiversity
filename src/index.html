@@ -80,41 +80,7 @@
 
   </main>
 
-  <script>
-
-      function initMap() {
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4.5,
-          center: {lat: 64.07, lng: -152.29}
-        });
-
-
-        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-
-        var markers = locations.map(function(location, i) {
-          return new google.maps.Marker({
-            position: location,
-            label: labels[i % labels.length]
-          });
-        });
-
-
-        var markerCluster = new MarkerClusterer(map, markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-      }
-      var locations = [{lat: 63.33, lng: -150.5},
-            {lat:67.78, lng: -153.3 },
-            {lat: 58.5, lng: -137},
-            {lat: 58.5, lng: -155},
-            {lat: 59.92, lng: -149.65},
-            {lat: 67.55, lng: -159.28},
-            {lat: 60.97, lng: -153.42},
-            {lat: 61, lng: -142}
-            ];
-
-    </script>
+  
     <script src = "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script >
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7c1Ktu8EgwR2j6H7yxzDqsh0bg7rc7M&callback=initMap"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
