@@ -27,6 +27,9 @@ h3 {
     font-size: 15px;
 }
 
+svg {
+  cursor: pointer;
+}
 
 /* * {
   background: #000 !important;
