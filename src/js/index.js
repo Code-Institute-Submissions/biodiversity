@@ -7,7 +7,8 @@ queue()
   .await(dataPlotting);
 
 function dataPlotting(error, parksData, akparksData) {
-
+//Clears filters from the charts
+  reset()
 //Creates a table to act as a map key
   makeTable(error, parksData);
 //Creates 3 charts to display data on the parks.
@@ -17,7 +18,12 @@ function dataPlotting(error, parksData, akparksData) {
 
 }
 
-
+function reset() {
+  d3.select("#reset")
+    .on('click', function() {
+      dc.filterAll();
+    });
+}
 
 function makeTable(error, parksData) {
 
