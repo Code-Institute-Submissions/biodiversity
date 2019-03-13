@@ -1,0 +1,85 @@
+
+
+[
+  {
+    "Park Code": "DENA",
+    "ParkName": "Denali National Park and Preserve",
+    "State": "AK",
+    "Acres": 3372402,
+    "Latitude": 63.33,
+    "Longitude": -150.5,
+    "Region": "Noncontiguous",
+    "Label": "A"
+  },
+  {
+    "Park Code": "GAAR",
+    "ParkName": "Gates Of The Arctic National Park and Preserve",
+    "State": "AK",
+    "Acres": 7523898,
+    "Latitude": 67.78,
+    "Longitude": -153.3,
+    "Region": "Noncontiguous",
+    "Label": "B"
+  },
+  {
+    "Park Code": "GLBA",
+    "ParkName": "Glacier Bay National Park and Preserve",
+    "State": "AK",
+    "Acres": 3224840,
+    "Latitude": 58.5,
+    "Longitude": -137,
+    "Region": "Noncontiguous",
+    "Label": "C"
+  },
+  {
+    "Park Code": "KATM",
+    "ParkName": "Katmai National Park and Preserve",
+    "State": "AK",
+    "Acres": 3674530,
+    "Latitude": 58.5,
+    "Longitude": -155,
+    "Region": "Noncontiguous",
+    "Label": "D"
+  },
+  {
+    "Park Code": "KEFJ",
+    "ParkName": "Kenai Fjords National Park",
+    "State": "AK",
+    "Acres": 669983,
+    "Latitude": 59.92,
+    "Longitude": -149.65,
+    "Region": "Noncontiguous",
+    "Label": "E"
+  },
+  {
+    "Park Code": "KOVA",
+    "ParkName": "Kobuk Valley National Park",
+    "State": "AK",
+    "Acres": 1750717,
+    "Latitude": 67.55,
+    "Longitude": -159.28,
+    "Region": "Noncontiguous",
+    "Label": "F"
+  },
+  {
+    "Park Code": "LACL",
+    "ParkName": "Lake Clark National Park and Preserve",
+    "State": "AK",
+    "Acres": 2619733,
+    "Latitude": 60.97,
+    "Longitude": -153.42,
+    "Region": "Noncontiguous",
+    "Label": "G"
+  },
+  {
+    "Park Code": "WRST",
+    "ParkName": "Wrangell - St Elias National Park and Preserve",
+    "State": "AK",
+    "Acres": 8323148,
+    "Latitude": 61,
+    "Longitude": -142,
+    "Region": "Noncontiguous",
+    "Label": "H"
+  }
+]
+
