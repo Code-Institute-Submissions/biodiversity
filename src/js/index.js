@@ -22,6 +22,7 @@ function reset() {
   d3.select("#reset")
     .on('click', function() {
       dc.filterAll();
+      dc.redrawAll();
     });
 }
 
