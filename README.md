@@ -6,7 +6,7 @@ This dashboard allows easy Visualisation of the location of all of the Alaskan N
 
 ![Denali National Park, Alaska](https://www.goodfreephotos.com/albums/united-states/alaska/denali-national-park/landscape-with-mountains-in-denali-national-park-alaska.jpg)
 
-Photo via [Good Free Photos](https://www.goodfreephotos.com)
+Photo via [Good Free Photos](https://www.goodfreephotos.com) under CC0.
 
 ### UX
 
