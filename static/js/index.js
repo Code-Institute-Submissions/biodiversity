@@ -2,8 +2,8 @@
 //organisms present.
 
 queue()
-  .defer(d3.json, "/static/data/parks.json")
-  .defer(d3.json, "/static/data/akparks.json")
+  .defer(d3.json, "static/data/parks.json")
+  .defer(d3.json, "static/data/akparks.json")
   .await(dataPlotting);
 
 function dataPlotting(error, parksData, akparksData) {
