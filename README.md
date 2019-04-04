@@ -1,10 +1,10 @@
 # Interactive Frontend Development Milestone Project
 
-## Data Visualisation Project
+## [Data Visualisation Project](https://petewillmott.github.io/biodiversity/)
 
 This dashboard allows easy Visualisation of the location of all of the Alaskan National Parks and an overview of the biodiversity within the parks. Combining Google Maps and Dimensional Charting (dc.js) to allow rapid understanding of a large volume of data.
 
-![Denali National Park, Alaska](https://www.goodfreephotos.com/albums/united-states/alaska/denali-national-park/landscape-with-mountains-in-denali-national-park-alaska.jpg)
+![Denali National Park, Alaska](https://s3.eu-central-1.amazonaws.com/petes-gp-bucket/denali-national-park.jpg)
 
 Photo via [Good Free Photos](https://www.goodfreephotos.com) under CC0.
 
@@ -14,7 +14,7 @@ Between the data driven nature of this project and my need to see the charts to 
 
 Simple pen and paper sketches suggested three to four charts would be a maximum to fit on a single page without crowding.
 
-[The brief](https://courses.codeinstitute.net/courses/course-v1:CodeInstitute+IFD101+2017_T3/courseware/e4482ae18d3142f7ba989b247b2e5ba9/d28b5efca8d4424ab3095f65010b3181/?activate_block_id=block-v1%3ACodeInstitute%2BIFD101%2B2017_T3%2Btype%40sequential%2Bblock%40d28b5efca8d4424ab3095f65010b3181) dictated most of the strategy and scope decisions. Leading to a single page design with a few high level charts allowing the possibility to narrow the focus to more specific data. During the scoping of the project it became apparent that certain options would not fit with the data set. It was not possible to filter on some axes due to patchy and inconsistently provided data. It was beyond my resources to verify the data or clarify if a missing value meant there was a predictable default or if the information was unknown. Filtering data by frequency, migratory status or conservation status for example were not possible with any degree of confidence in the chart produced. These columns were edited out to reduce the file sizes since the information could not be used anyway. To make the amount of information more manageable and not overload the user the data set was further reduced to just the information on the Alaskan Parks.
+[The brief](https://s3.eu-central-1.amazonaws.com/petes-gp-bucket/brief.odt) dictated most of the strategy and scope decisions. Leading to a single page design with a few high level charts allowing the possibility to narrow the focus to more specific data. During the scoping of the project it became apparent that certain options would not fit with the data set. It was not possible to filter on some axes due to patchy and inconsistently provided data. It was beyond my resources to verify the data or clarify if a missing value meant there was a predictable default or if the information was unknown. Filtering data by frequency, migratory status or conservation status for example were not possible with any degree of confidence in the chart produced. These columns were edited out to reduce the file sizes since the information could not be used anyway. To make the amount of information more manageable and not overload the user the data set was further reduced to just the information on the Alaskan Parks.
 
 The following user stories were developed.
 
@@ -48,15 +48,15 @@ The map shows the whole state allowing the easy localisation of any park. Accomp
 
 **The Size Pie Chart**
 
-This chart shows at a glance the relative sizes of the Alaskan National Parks. Selecting one, or more, of the parks filters the results on the species chart. The reset button will clear all of the filters on all three charts.
+This chart shows at a glance the relative sizes of the Alaskan National Parks. Selecting one, or more, of the parks filters the results on the species chart displaying the species present in the park(s) selected. The reset button will clear all of the filters on all three charts.
 
 **The Species Pie Chart**
 
-This chart shows a rapidly and intuitive display of the proportions of the species types present either in the Alaskan National Parks or a selected sub-set of them. These results can be filtered by selecting a park, or group of parks, on either of the other charts. A selection on this chart will also filter the other two by species category.
+This chart shows a rapidly and intuitive display of the proportions of the species types present either in the Alaskan National Parks or a selected sub-set of them. These results can be filtered by selecting a park, or group of parks, on either of the other charts. A selection on this chart will also filter the other two by species category, displaying the relative size of the parks where the selected species category is present on the Size chart and showing the number of different species within the category on the Species bar chart.
 
 **The Species Stacked Bar Chart**
 
-This chart shows the proportion of the species categories by individual park, rather than the combined total shown by the pie chart. This chart can be filtered by species category using the species chart and can be used to filter the species category pie chart by park.
+This chart shows the proportion of the species categories by individual park, rather than the combined total shown by the pie chart. This chart can be filtered by species category using the species chart and can be used to filter the species category pie chart by park in a similar manner to the Size pie chart.
 
 
 #### Features Left To Implement
@@ -95,9 +95,22 @@ Used to defer the creation of DC charts to ensure the loading of data before att
 
 ### Testing
 
-The site was tested on both Windows and Mac laptops with several browsers, for full test schedule and results see the attached [test table](). As per [the guidelines](https://courses.codeinstitute.net/courses/course-v1:CodeInstitute+IFD101+2017_T3/courseware/e4482ae18d3142f7ba989b247b2e5ba9/d28b5efca8d4424ab3095f65010b3181/?activate_block_id=block-v1%3ACodeInstitute%2BIFD101%2B2017_T3%2Btype%40sequential%2Bblock%40d28b5efca8d4424ab3095f65010b3181) testing for responsive design was limited as dc.js is not designed to be responsive.
+The site was tested on both Windows and Mac laptops with several browsers, for full test schedule and results see the attached [test table](https://s3.eu-central-1.amazonaws.com/petes-gp-bucket/test_schedule.odt). As per [the guidelines](https://s3.eu-central-1.amazonaws.com/petes-gp-bucket/guidelines.odt) testing for responsive design was limited as dc.js is not designed to be responsive.
 
 ### Deployment
+
+#### GitHub repository - https://github.com/PeteWillmott/biodiversity
+#### GitHub pages - https://petewillmott.github.io/biodiversity/
+
+The site is deployed to [GitHub pages](https://petewillmott.github.io/biodiversity/) from the [master branch](https://github.com/PeteWillmott/biodiversity) and updates automatically as new updates are pushed to GitHub.
+
+To run locally you can either download direct from GitHub, using the green "Clone or download" button, or clone by entering `git clone https://github.com/PeteWillmott/biodiversity.git`. To sever the link to my repository use the command `git remote rm origin`.
+
+To deploy to GitHub pages
+
+* Go to the desired repository.
+* From the settings menu scroll to the GitHub pages section and select the appropriate branch.
+* Optionally enter a custom URL, otherwise use the GitHub pages generated URL. NB pages requires the landing page be named `index.html`.
 
 ### Credits
 
