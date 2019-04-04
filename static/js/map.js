@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
   {
     var js_file = document.createElement('script');
     js_file.type = 'text/javascript';
+    js_file.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7c1Ktu8EgwR2j6H7yxzDqsh0bg7rc7M&callback=initMap';
+    document.getElementsByTagName('head')[0].appendChild(js_file);
   
     document.getElementsByTagName('head')[0].appendChild(js_file);
   }

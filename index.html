@@ -25,7 +25,7 @@
 <body>
 
   <main>
-    <div class="container full-width">
+    <div class="container-fluid">
 
       <div class="row">
         <div class="col-xs-12">
@@ -45,18 +45,29 @@
       </div>
     </div>
 
-    <div class="container">
-
+    <div class="container-fluid">
+      
       <div class="row">
-        <div class="col-xs-12" id="park-size">
-          <h3>Relative Sizes of the Alaskan Parks</h3>
-          <p>Filter(s): <span  class="filter">Click on a segment of a chart or key to filter results.</span></p>
-          <button class="reset" id="reset">Reset</button>
+        <div class="col-xs-12">
+          <hr>
+          <p class="text-margin">Sub-sets of data can be selected from all of the charts by clicking on the desired category, on either chart or key</p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="reset text-margin" id="reset">Reset</button>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-xs-12" id="num-species">
+        <div class="col-xs-6" id="park-size">
+          <h3>Relative Sizes of the Alaskan Parks</h3>
+          <p>Filter(s): <span  class="filter">None selected</span></p>
+          
+        </div>
+      
+        <div class="col-xs-6" id="num-species">
           <h3>Number of Species by Park</h3>
           <p>Filter(s): <span  class="filter">None selected</span></p>
         </div>
