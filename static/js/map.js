@@ -5,13 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     js_file.type = 'text/javascript';
     js_file.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7c1Ktu8EgwR2j6H7yxzDqsh0bg7rc7M&callback=initMap';
     document.getElementsByTagName('head')[0].appendChild(js_file);
-  
-    document.getElementsByTagName('head')[0].appendChild(js_file);
   }
 });
 
 function initMap() {
-    //var labels = "ABCDEFGHIJKLMONPQRSTUVWXYZ";
+    var labels = "ABCDEFGHIJKLMONPQRSTUVWXYZ";
+    var labelIndex = 0;
     var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 4.5,
           center: {lat: 64.07, lng: -152.29}
@@ -30,6 +29,7 @@ function initMap() {
             var markers = locations.map(function(location) {
                 return new google.maps.Marker({
                     position: location,
+                    label: labels[labelIndex++ % labels.length]
                 });
             });
             var markerCluster = new MarkerClusterer(map, markers, {
