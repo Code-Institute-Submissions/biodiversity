@@ -2,11 +2,11 @@
 
 ## [Data Visualisation Project](https://petewillmott.github.io/biodiversity/)
 
-This dashboard allows easy Visualisation of the location of all of the Alaskan National Parks and an overview of the biodiversity within the parks. Combining Google Maps and Dimensional Charting (dc.js) to allow rapid understanding of a large volume of data.
+This dashboard allows easy visualisation of the location of all of the Alaskan National Parks and an overview of the biodiversity within the parks. Combining Google Maps and Dimensional Charting (dc.js) to allow rapid understanding of a large volume of data.
 
 ![Denali National Park, Alaska](https://s3.eu-central-1.amazonaws.com/petes-gp-bucket/denali-national-park.jpg)
 
-Photo via [Good Free Photos](https://www.goodfreephotos.com) under CC0.
+Photo via [Good Free Photos](https://www.goodfreephotos.com/united-states/alaska/denali-national-park/landscape-with-mountains-in-denali-national-park-alaska.jpg.php) under [CC0](https://creativecommons.org/licenses/publicdomain/).
 
 ### UX
 
