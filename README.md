@@ -12,7 +12,7 @@ Photo via [Good Free Photos](https://www.goodfreephotos.com/united-states/alaska
 
 Between the data driven nature of this project and my need to see the charts to understand what would work and what would not there were no detailed sketches made and Balsamiq was not used.
 
-Simple pen and paper sketches suggested three to four charts would be a maximum to fit on a single page without crowding.
+Simple pen and paper [sketches](https://s3.eu-central-1.amazonaws.com/petes-gp-bucket/DSC_0628.JPG) suggested three to four charts would be a maximum to fit on a single page without crowding.
 
 [The brief](https://s3.eu-central-1.amazonaws.com/petes-gp-bucket/brief.odt) dictated most of the strategy and scope decisions. Leading to a single page design with a few high level charts allowing the possibility to narrow the focus to more specific data. During the scoping of the project it became apparent that certain options would not fit with the data set. It was not possible to filter on some axes due to patchy and inconsistently provided data. It was beyond my resources to verify the data or clarify if a missing value meant there was a predictable default or if the information was unknown. Filtering data by frequency, migratory status or conservation status for example were not possible with any degree of confidence in the chart produced. These columns were edited out to reduce the file sizes since the information could not be used anyway. To make the amount of information more manageable and not overload the user the data set was further reduced to just the information on the Alaskan Parks.
 
